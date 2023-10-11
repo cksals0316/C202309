@@ -32,25 +32,33 @@ int sumScores(int scores[]) {  // 함수 선언
 	for (int i = 0; i < STUDENTS; i++) {
 		sum += scores[i];  // 학생들의 점수를 전체 더하기
 	}
+	return sum;
 }
 
 double averageScores(int scores[]) {
 	double average;
 	double sum = 0;
 	for (int i = 0; i < STUDENTS; i++) {
-		sum += scores[i];  //점수 평균 구하기
+		sum += scores[i];  // 학생들의 점수를 전체 더하기
 	}
-	average = sum / STUDENTS;
+	average = sum / STUDENTS; // 점수 평균 구하기
+	return average;
 }
 
 
-void printRanks(int scores[]) {
-	int scores[STUDENTS];
+void printRanks(int scores[]) {  // 함수 선언
+	for (int i = 0; i < STUDENTS; i++) {
+		int j = STUDENTS;
+		for (int k = 0; k < STUDENTS; k++) {  
+			if (scores[i] > scores[k]) {  //점수 비교
+				j--;  // 순위를 올리기
+			}
+		}
+		printf("%d 학생의 순위는 %d 입니다.\n", i+1, j); 
+	}
 }
 
-
-
-int main(){
+int main() {
 	int scores[STUDENTS];  //성적을 저장할 배열 선언
 
 	for (int i = 0; i < STUDENTS; i++) {
@@ -63,12 +71,12 @@ int main(){
 	char target;
 	printf("특정 점수 (A, B, C, D, F)를 입력하시오");
 	scanf_s("%c", &target, 1);
-	
+
 	classifyStudents(scores, target);  //학생들의 성적 분류 및 출력
 
 	int sum = sumScores(scores);
 	double average = averageScores(scores);
-	printf("학생들 점수의 총 합은 %d 이고, 평균 값은 %lf입니다 \n", sum, average)
+	printf("학생들 점수의 총 합은 %d 이고, 평균 값은 %lf입니다 \n", sum, average);
 
 	printRanks(scores);
 
