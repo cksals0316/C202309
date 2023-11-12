@@ -59,10 +59,8 @@ int getSum(int numArray[], int length) {
 }
 
 double getAverage(int numArray[], int length) {
-	int totalDays = 0; 
-	for (int i = 0; i < length; i++) {
-		totalDays += numArray[i];
-	}
+	int totalDays = getSum;
+
 	double averageDays = (double)totalDays / length;
 	return averageDays;
 }
